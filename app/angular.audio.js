@@ -103,7 +103,6 @@ angular.module('ngAudio', [])
 .service('remoteAudioFindingService', ['$q', function($q) {
 
     var audio = new Audio();
-
     this.find = function(url) {
         var deferred = $q.defer();
 
