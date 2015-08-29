@@ -102,9 +102,10 @@ angular.module('ngAudio', [])
 
 .service('remoteAudioFindingService', ['$q', function($q) {
 
+    var audio = new Audio();
+
     this.find = function(url) {
         var deferred = $q.defer();
-        var audio = new Audio();
 
         audio.addEventListener('error', function() {
             deferred.reject();
@@ -151,8 +152,10 @@ angular.module('ngAudio', [])
     return function(id, scope) {
 
         function twiddle(){
-            audio.play();
-            audio.pause();
+            if( audio) {
+                audio.play();
+                audio.pause();
+            };
             window.removeEventListener("click",twiddle);
         }
 
